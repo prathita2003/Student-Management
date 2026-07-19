@@ -1,146 +1,300 @@
-🎓 Student Management System
+# Student Management System
 
-A full-stack Student Management System built using Java and Spring Boot, designed to manage students, courses, and role-based access within an academic institution. The application provides separate dashboards for Admins and Students, ensuring secure access and clean separation of responsibilities.
+[Insert Image 1 – Project Banner]
 
-📌 Project Overview
+![Java](https://img.shields.io/badge/Java-21-orange?style=for-the-badge)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.2-green?style=for-the-badge)
+![Spring Security](https://img.shields.io/badge/Spring_Security-6-success?style=for-the-badge)
+![Spring Data JPA](https://img.shields.io/badge/Spring_Data_JPA-blue?style=for-the-badge)
+![Thymeleaf](https://img.shields.io/badge/Thymeleaf-3.1-darkgreen?style=for-the-badge)
+![H2 Database](https://img.shields.io/badge/H2_Database-Embedded-blueviolet?style=for-the-badge)
+![Maven](https://img.shields.io/badge/Maven-Build-red?style=for-the-badge)
 
-This project aims to simplify the administrative and academic workflow of educational institutions by digitizing student and course management. Administrators can create students and assign courses, while students can securely log in to view their profiles and enrolled courses.
+A secure **Spring Boot MVC** web application for managing students, faculty, and administrators through role-based authentication and authorization. Built using **Spring Boot**, **Spring Security**, **Spring Data JPA**, **Thymeleaf**, and an **H2 File Database**, the application follows a layered MVC architecture to provide a secure and scalable academic management platform.
 
-The application follows a Model–View–Controller (MVC) architecture and implements Spring Security for authentication and authorization.
+---
 
-✨ Features
-🔐 Authentication & Authorization
+## Overview
 
-Secure login system using Spring Security
+The Student Management System streamlines academic administration by providing dedicated dashboards for administrators, faculty members, and students. The application implements secure authentication using Spring Security and restricts access based on user roles.
 
-Role-based access control (ADMIN, STUDENT, FACULTY)
+Following the MVC (Model–View–Controller) design pattern, the project separates presentation, business logic, and persistence layers to improve maintainability and scalability.
 
-Unauthorized access prevention
+---
 
-👨‍💼 Admin Module
+## Features
 
-Admin login dashboard
+- Secure authentication using Spring Security
+- Role-Based Access Control (Admin, Faculty, Student)
+- Administrator dashboard
+- Faculty dashboard
+- Student dashboard
+- Student management
+- BCrypt password encryption
+- Persistent H2 File Database
+- Server-side rendering with Thymeleaf
+- Layered MVC architecture
 
-Create and manage student accounts
+---
 
-Assign courses to students
+## Technology Stack
 
-View registered students and course mappings
+| Category | Technologies |
+|-----------|--------------|
+| Language | Java 21 |
+| Framework | Spring Boot 3.2 |
+| Security | Spring Security |
+| ORM | Spring Data JPA (Hibernate) |
+| Frontend | Thymeleaf, HTML, CSS |
+| Database | H2 File Database |
+| Build Tool | Maven |
 
-👨‍🎓 Student Module
+---
 
-Student login dashboard
+## System Architecture
 
-View assigned courses
+[Insert Image 2 – System Architecture]
 
-View personal profile details
+**Figure 1 – High-level architecture of the application.**
 
-🏗 Architecture & Design
+The application follows a layered architecture where HTTP requests are handled by Spring MVC controllers, processed by the service layer, persisted through Spring Data JPA repositories, and stored in the H2 file database.
 
-MVC design pattern
+---
 
-Clean separation of Controller, Service, and Repository layers
+## Authentication & Authorization
 
-Thymeleaf templates for server-side rendering
+[Insert Image 3 – Authentication Flow]
 
-🛠 Tech Stack
-Layer	Technology
-Backend	Java, Spring Boot
-Security	Spring Security
-Frontend	Thymeleaf, HTML, CSS
-Database	MySQL
-ORM	Spring Data JPA / Hibernate
-Build Tool	Maven
-📂 Project Structure
-Student-Management/
+**Figure 2 – Authentication and role-based authorization workflow.**
+
+Spring Security authenticates users and redirects them to dashboards based on their assigned roles.
+
+Supported roles:
+
+- Administrator
+- Faculty
+- Student
+
+Each role is granted access only to authorized resources.
+
+---
+
+## Project Structure
+
+```text
+src
+├── main
+│   ├── java
+│   │   ├── config
+│   │   ├── controller
+│   │   ├── model
+│   │   ├── repository
+│   │   ├── service
+│   │   └── StudentManagementApplication.java
+│   │
+│   └── resources
+│       ├── templates
+│       ├── static
+│       └── application.properties
 │
-├── src/main/java
-│   └── com.example.studentmanagement
-│       ├── controller
-│       ├── service
-│       ├── repository
-│       ├── model
-│       └── config
-│
-├── src/main/resources
-│   ├── templates
-│   │   ├── admin
-│   │   └── student
-│   ├── static
-│   └── application.properties
-│
-├── pom.xml
-└── README.md
+└── test
+```
 
-⚙️ Setup & Installation
-Prerequisites:
-Java 17+
-Maven
-MySQL
-Git
+| Folder | Description |
+|----------|-------------|
+| controller | Handles incoming HTTP requests |
+| service | Contains business logic |
+| repository | Data access layer using Spring Data JPA |
+| model | Entity classes |
+| config | Security and application configuration |
+| templates | Thymeleaf HTML pages |
+| static | CSS, JavaScript and image resources |
 
-Steps to Run Locally:
-Clone the repository
-git clone https://github.com/prathita2003/Student-Management.git
-Navigate to project directory
-cd Student-Management
-Configure Database
-Update application.properties:
+---
 
-spring.datasource.url=jdbc:mysql://localhost:3306/student_db
-spring.datasource.username=root
-spring.datasource.password=yourpassword
+## Installation
 
+### Clone the Repository
 
-Run the application
+```bash
+git clone https://github.com/prathita2003/Student-Management-System.git
+```
 
+```bash
+cd Student-Management-System
+```
+
+---
+
+## Build the Project
+
+```bash
+mvn clean install
+```
+
+---
+
+## Run the Application
+
+Using Maven:
+
+```bash
 mvn spring-boot:run
+```
 
+or
 
-Access the application
+```bash
+mvnw.cmd spring-boot:run
+```
 
-http://localhost:8080
+Open the application:
 
-🔑 Default Roles
-Role	Access
-Admin	Manage students & courses
-Student	View assigned courses & profile
+```
+http://localhost:8080/login
+```
 
-(Admin credentials can be configured in the database or during initialization)
+---
 
-🚀 Future Enhancements
+## Default Login Credentials
 
-Course creation module
+The application initializes the following users during startup.
 
-Attendance tracking
+| Role | Username | Password |
+|------|----------|----------|
+| Administrator | admin | admin123 |
+| Faculty | faculty | fac123 |
+| Student | student | std123 |
 
-Marks & grade management
+---
 
-REST API support
+## Database
 
-Deployment on AWS / Render
+The application uses a persistent **H2 File Database**.
 
-UI improvements using Bootstrap
+**Database Location**
 
-📚 Learning Outcomes
+```
+data/studentdb.mv.db
+```
 
-Hands-on experience with Spring Boot & Spring Security
+**H2 Console**
 
-Understanding role-based authentication
+```
+http://localhost:8080/h2-console
+```
 
-MVC architecture implementation
+**JDBC URL**
 
-Database integration using JPA
+```
+jdbc:h2:file:./data/studentdb
+```
 
-Real-world full-stack Java application design
+**Username**
 
-👤 Author
+```
+sa
+```
 
-Prathita Kumar Madhusudhana
-Mechanical Engineering | Java Full Stack Developer
+**Password**
 
-⭐ Acknowledgements
+```
+(blank)
+```
 
-Spring Boot & Spring Security documentation
+---
 
-Open-source community
+## Request Flow
+
+```text
+Browser
+     │
+     ▼
+Spring MVC Controller
+     │
+     ▼
+Service Layer
+     │
+     ▼
+Spring Data JPA Repository
+     │
+     ▼
+H2 File Database
+```
+
+---
+
+## Application Screenshots
+
+### Login Page
+
+[Insert Image 4 – Login Page]
+
+**Figure 3 – Secure login page.**
+
+---
+
+### Administrator Dashboard
+
+[Insert Image 5 – Administrator Dashboard]
+
+**Figure 4 – Administrator dashboard after successful authentication.**
+
+---
+
+### Student Dashboard
+
+[Insert Image 6 – Student Dashboard]
+
+**Figure 5 – Student dashboard.**
+
+---
+
+### Faculty Dashboard
+
+[Insert Image 7 – Faculty Dashboard]
+
+**Figure 6 – Faculty dashboard.**
+
+---
+
+### H2 Database Console
+
+[Insert Image 8 – H2 Database Console]
+
+**Figure 7 – H2 database console connected to the application database.**
+
+---
+
+### Project Structure
+
+[Insert Image 9 – Project Structure]
+
+**Figure 8 – Project directory organization.**
+
+---
+
+## Future Enhancements
+
+- PostgreSQL/MySQL support
+- REST API integration
+- Student attendance management
+- Grade management system
+- Email notifications
+- Profile management
+- Docker support
+- Unit and Integration Testing
+- Cloud deployment (Render, Railway, AWS)
+
+---
+
+## Author
+
+**Prathita Kumar Madhusudhana**
+
+- GitHub: https://github.com/prathita2003
+- LinkedIn: https://www.linkedin.com/in/prathita-kumar-madhusudhana/
+
+---
+
+If you found this project useful, consider giving it a **star** on GitHub.
